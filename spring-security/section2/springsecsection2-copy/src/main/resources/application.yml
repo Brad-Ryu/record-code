@@ -1,14 +1,18 @@
 spring:
   application:
-    name: ${SPRING_APP_NAME:springsecsection1}
-  security:
-    user:
-      name: ${SECURITY_USERNAME:eazybytes}
-      password: ${SECURITY_PASSWORD:12345}
-logging:
-  level:
-    org:
-      springframework:
-        security: ${SPRING_SECURITY_LOG_LEVEL:TRACE}
-  pattern:
-    console: ${LOGPATTERN_CONSOLE:%green(%d{HH:mm:ss.SSS}) %blue(%-5level) %red([%thread]) %yellow(%logger{15}) - %msg%n}
+    name: ${SPRING_APP_NAME:bradryubackend}
+  logging:
+    level:
+      org.springframework.security: ${SPRING_SECURITY_LOG_LEVEL:TRACE}
+    pattern:
+      console: ${LOGPATTERN_CONSOLE:%green(%d{HH:mm:ss.SSS}) %blue(%-5level) %red([%thread]) %yellow(%logger{15}) - %msg%n}
+  datasource:
+    url: jdbc:postgresql://${DATABASE_HOST:localhost}:${DATABASE_PORT:5432}/${DATABASE_NAME:spring-security}
+    username: ${DATABASE_USERNAME:postgres}
+    password: ${DATABASE_PASSWORD:12341234}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    show-sql: ${JPA_SHOW_SQL:true}
+    properties:
+      hibernate:
+        format_sql: ${HIBERNATE_FORMAT_SQL:true}
